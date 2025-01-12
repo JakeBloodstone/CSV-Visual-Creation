@@ -1,7 +1,9 @@
 import csv
-import matplotlib.pyplot as plt
+import json
 import process
 import visualize
+import export
+
 # Global variable to store the data
 data = None
 
@@ -44,7 +46,8 @@ def main_menu():
     print("1. Load Data")
     print("2. Process Data")
     print("3. Visualize Data")
-    print("4. Exit")
+    print("4. Export Data")
+    print("5. Exit")
     return input("Enter your choice: ")
 
 def process_data():
@@ -106,6 +109,30 @@ def visualize_data():
         else:
             print("Invalid choice. Please try again.")
 
+
+def export_data():
+    """
+    Sub-menu for exporting data.
+    """
+    while True:
+        print("\nExport Data")
+        print("====================")
+        print("1. Export Revenue by Store to JSON")
+        print("2. Back to Main Menu")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            if not data:
+                print("No data loaded. Please load the data first.")
+                continue
+            export.export_revenue_as_json(data)
+        elif choice == "2":
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+
 def main():
     while True:
         choice = main_menu()
@@ -116,6 +143,8 @@ def main():
         elif choice == "3":
             visualize_data()
         elif choice == "4":
+            export_data()
+        elif choice == "5":
             print("Exiting program. Goodbye!")
             break
         else:
