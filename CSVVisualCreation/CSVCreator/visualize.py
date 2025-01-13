@@ -32,7 +32,7 @@ def plot_transaction_histogram(data):
         plt.figure(figsize=(10, 6))
         plt.hist(transaction_values, bins=20, color='skyblue', edgecolor='black')
         plt.title("Distribution of Transactional Values")
-        plt.xlabel("Transaction Value ($)")
+        plt.xlabel("Transaction Value (£)")
         plt.ylabel("Frequency")
         plt.grid(axis='y', linestyle='--', alpha=0.7)
         plt.show()
