@@ -3,7 +3,8 @@ import process
 import visualize
 import export
 
-# Global variable to store the data
+# Global variable to store the data of the CSV file
+# using load_data() and load_data_option()
 data = None
 
 def load_data():
@@ -39,6 +40,7 @@ def load_data_option():
     if data is not None:
         print("Data is now loaded into memory.")
 
+#
 def process_data():
     if data is None:
         print("No data loaded. Please load the data first.")
