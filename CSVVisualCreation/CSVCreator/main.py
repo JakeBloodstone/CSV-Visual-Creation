@@ -1,5 +1,4 @@
 import csv
-import json
 import process
 import visualize
 import export
@@ -15,7 +14,7 @@ def load_data():
         list[dict]: The loaded data as a list of dictionaries.
     """
     try:
-        file_name = '../../../Downloads/retail_sales_data.csv'
+        file_name = 'retail_sales_data.csv'
         with open(file_name, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             data = [row for row in reader]
@@ -40,16 +39,6 @@ def load_data_option():
     if data is not None:
         print("Data is now loaded into memory.")
 
-def main_menu():
-    print("\nE-Commerce Dashboard")
-    print("====================")
-    print("1. Load Data")
-    print("2. Process Data")
-    print("3. Visualize Data")
-    print("4. Export Data")
-    print("5. Exit")
-    return input("Enter your choice: ")
-
 def process_data():
     if data is None:
         print("No data loaded. Please load the data first.")
@@ -70,7 +59,7 @@ def process_data():
         if choice == "1":
             process.retrieve_total_transactions(data)
         elif choice == "2":
-            process.retrieve_unique_values(data, "StoreLocation")
+            process.retrieve_unique_stores(data, "StoreLocation")
         elif choice == "3":
             transaction_id = input("Enter TransactionID: ")
             process.retrieve_transaction_by_id(data, transaction_id)
@@ -109,7 +98,6 @@ def visualize_data():
         else:
             print("Invalid choice. Please try again.")
 
-
 def export_data():
     """
     Sub-menu for exporting data.
@@ -132,6 +120,15 @@ def export_data():
         else:
             print("Invalid choice. Please try again.")
 
+def main_menu():
+    print("\nE-Commerce Dashboard")
+    print("====================")
+    print("1. Load Data")
+    print("2. Process Data")
+    print("3. Visualize Data")
+    print("4. Export Data")
+    print("5. Exit")
+    return input("Enter your choice: ")
 
 def main():
     while True:

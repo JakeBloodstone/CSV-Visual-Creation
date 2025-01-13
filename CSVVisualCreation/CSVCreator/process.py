@@ -5,12 +5,14 @@ def retrieve_total_transactions(data):
     total = len(data)
     print(f"Total Transactions: {total}")
 
-def retrieve_unique_values(data, column_name):
+def retrieve_unique_stores(data, column_name):
     """
     Retrieve unique values from a specified column.
+    In this case, it's retrieving how many unique Store Locations
+    are in the CSV file.
     """
-    unique_values = set(row[column_name] for row in data if column_name in row)
-    print(f"Unique {column_name}: {unique_values}")
+    unique_stores = set(row[column_name] for row in data if column_name in row)
+    print(f"Unique {column_name}: {unique_stores}")
 
 def retrieve_transaction_by_id(data, transaction_id):
     """
@@ -45,7 +47,7 @@ def group_by_store_and_calculate_revenue(data):
 
     print("Total Revenue by Store Location:")
     for location, revenue in revenue_by_location.items():
-        print(f"{location}: {revenue:.2f}")
+        print(f"{location}: £{revenue:.2f}")
 
 def summary_by_store(data, store_location):
     """
@@ -65,10 +67,10 @@ def summary_by_store(data, store_location):
 
         print(f"Summary for {store_location}:")
         print(f"  Total Transactions: {total_transactions}")
-        print(f"  Total Revenue: {total_revenue:.2f}")
-        print(f"  Average Transaction Value: {avg_transaction_value:.2f}")
+        print(f"  Total Revenue: £{total_revenue:.2f}")
+        print(f"  Average Transaction Value: £{avg_transaction_value:.2f}")
         print(f"  Total Quantity Sold: {total_quantity}")
-        print(f"  Average Customer Satisfaction: {avg_customer_satisfaction:.2f}")
+        print(f"  Average Customer Satisfaction: {avg_customer_satisfaction:.2f}%")
         print("  Payment Method Distribution:")
         for method, count in payment_methods.items():
             percentage = (count / total_transactions) * 100
